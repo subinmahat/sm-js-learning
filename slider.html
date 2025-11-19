@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slider</title>
+    <style>
+        .slider-container {
+            position: relative;
+            width: 800px;
+            border: 1px solid #000000;
+            overflow: hidden;
+        }
+        
+        .slider {
+            display: flex;
+        }
+
+        .slide {
+            flex: 0 0 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .slide.active {
+            transform: translateX(0);
+        }
+
+        .prev-slide,
+        .next-slide {
+            margin: 0 10px;
+        }
+    </style> 
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide active" style="background: url(laptop.webp);"></div>
+            <div class="slide" style="background: url(laptop.webp);"></div>
+            <div class="slide" style="background: url(laptop.webp);"></div>
+            <div class="slide" style="background: url(laptop.webp);"></div>
+        </div>
+        <div class="slider-controls">
+            <button class="prev-slide">Prev</button>
+            <button class="next-slide">Next</button>
+        </div>
+    </div>
+    <script>
+        const slider = document.querySelector(".slider");
+        const slides = document.querySelectorAll(".slide");
+        const prevBtn = document.querySelector(".prev-slide");
+        const nextBtn = document.querySelector(".next-slide");
+
+        let slideIndex = 0;
+
+        slides[slideIndex].classList.add('active');
+
+        prevBtn.addEventListener('click', prevslide);
+        nextBtn.addEventListener('click', nextslide);
+
+        function prevSlide (){
+            
+        }
+        function nextSlide (){
+            slides[slideIndex].classlist.remove('active');
+
+            slideIndex = (slideIndex === slides.length -1) ? 0 : slideIndex + 1;
+            slides[slideIndex].classList.add('active');
+            slider.style.transform = 'translateX(-${slideIndex * 100}%)';
+        }
+    </script>
+</body>
+</html>
