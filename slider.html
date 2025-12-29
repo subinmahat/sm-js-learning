@@ -10,10 +10,12 @@
                 width: 800px;
                 border: 1px solid #000000;
                 overflow: hidden;
+                margin: 12rem auto 0;
             }
             
             .slider {
                 display: flex;
+                transition: transform 0.5s ease-in-out;
             }
 
             .slide {
@@ -43,10 +45,10 @@
     <body>
         <div class="slider-container">
             <div class="slider">
-                <div class="slide active" style="background: url(laptop.webp);"></div>
-                <div class="slide" style="background: url(99.webp);"></div>
-                <div class="slide" style="background: url(beautiful-green-field-scenery-free-image.webp);"></div>
-                <div class="slide" style="background: url(laptop.webp);"></div>
+                <div class="slide active" style="background-color: aqua;"></div>
+                <div class="slide" style="background-color: blueviolet;"></div>
+                <div class="slide" style="background-color: bisque;"></div>
+                <div class="slide" style="background-color: cadetblue;"></div>
             </div>
             <div class="slider-controls">
                 <button class="prev-slide">Prev</button>
@@ -67,7 +69,11 @@
             nextBtn.addEventListener('click', nextSlide);
 
             function prevSlide (){
-                
+                slides[slideIndex].classList.remove('active');
+
+                slideIndex = (slideIndex === 0) ? slides.length - 1 : slideIndex - 1;
+                slides[slideIndex].classList.add('active');
+                slider.style.transform = `translateX(-${slideIndex * 100}%)`;
             }
             function nextSlide (){
                 slides[slideIndex].classList.remove('active');
