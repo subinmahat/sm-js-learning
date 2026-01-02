@@ -13,7 +13,7 @@ if (mobile_view.matches) {
 }
 let right_mover = () => {
     l = l + movePer;
-    if (product == 1) { l = 0 }
+    if (product == 1) { l = 0 } 
     for (const i of product) {
         if (l > maxMove) { l = l - movePer; }
         i.style.left = '-' + l + '%';
